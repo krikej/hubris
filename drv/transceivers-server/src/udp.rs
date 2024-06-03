@@ -1082,7 +1082,7 @@ impl ServerImpl {
         if let Some(page) = page.page() {
             result = match self
                 .front_io
-                .transceivers_set_i2c_write_buffer(mask, &mut [page])
+                .transceivers_set_i2c_write_buffer(mask, &[page])
             {
                 Ok(r) => result.chain(r),
                 Err(e) => {
@@ -1118,7 +1118,7 @@ impl ServerImpl {
         if let Some(bank) = page.bank() {
             result = match self
                 .front_io
-                .transceivers_set_i2c_write_buffer(mask, &mut [bank])
+                .transceivers_set_i2c_write_buffer(mask, &[bank])
             {
                 Ok(r) => result.chain(r),
                 Err(e) => {

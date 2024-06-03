@@ -288,11 +288,10 @@ impl idl::InOrderFrontIOImpl for ServerImpl {
         &mut self,
         _: &RecvMessage,
     ) -> Result<bool, RequestError<FrontIOError>> {
-        Ok(self
-            .phy_smi
+        self.phy_smi
             .powered_up_and_ready()
             .map_err(FrontIOError::from)
-            .map_err(RequestError::from)?)
+            .map_err(RequestError::from)
     }
 
     fn phy_set_osc_state(

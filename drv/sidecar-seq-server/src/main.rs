@@ -305,10 +305,10 @@ impl ServerImpl {
     // board or the oscillator should have been found operating nominally before
     // transitioning to A0.
     fn ready_for_tofino_power_up(&self) -> bool {
-        match self.front_io_board.board_status() {
-            FrontIOStatus::NotPresent | FrontIOStatus::Ready => true,
-            _ => false,
-        }
+        matches!(
+            self.front_io_board.board_status(),
+            FrontIOStatus::NotPresent | FrontIOStatus::Ready
+        )
     }
 }
 
